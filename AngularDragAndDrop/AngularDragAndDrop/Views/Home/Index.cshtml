@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular Drag And Drop with ASP.NET MVC Example</title>
+       
+</head>
+<body ng-app="AngularDragAndDropExample">
+
+    <div class="container" ng-controller="DragDropController as MainCtrl">
+
+        <div class="row">
+            <h1>Angular Drag And Drop with ASP.NET MVC Example</h1>
+        </div>
+
+
+        <ul class="draggable-objects">
+            <li ng-repeat="obj in SearchEmployees">
+                <div ng-drag="true" ng-drag-data="obj" data-allow-transform="true" ng-style="{'background-image' : obj.picture}">
+                    <pre ng-show="hide">myStyle={{obj.picture}}</pre>
+                    {{obj.name}}
+                </div>
+            </li>
+        </ul>
+
+
+
+        <ul class="draggable-objects">
+            <li ng-repeat="obj in draggableObjects">
+                <div ng-drag="true" ng-drag-data="obj" data-allow-transform="true" ng-style="{'background-image' : obj.picture}">
+                    <pre ng-show="hide">myStyle={{obj.picture}}</pre>
+                    {{obj.name}}
+                </div>
+            </li>
+        </ul>
+
+        <hr />
+        <div ng-drop="true" ng-drop-success="onDropComplete1($data,$event)">
+            <span class="title">Animals</span>
+
+            <div ng-repeat="obj in droppedObjects1" ng-drag="false"
+                ng-style="{'background-image' : obj.picture}"
+                ng-drag-data="obj" ng-drag-success="onDragSuccess1($data,$event)" ng-center-anchor="{{centerAnchor}}">
+                {{obj.name}}
+         
+            </div>
+
+        </div>
+
+        <div ng-drop="true" ng-drop-success="onDropComplete2($data,$event)">
+            <span class="title">Birds</span>
+
+            <div ng-repeat="obj in droppedObjects2" ng-drag="false" ng-drag-data="obj" ng-drag-success="onDragSuccess2($data,$event)" 
+                ng-style="{'background-image' : obj.picture}"
+                ng-center-anchor="{{centerAnchor}}">
+                {{obj.name}}
+         
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 text-center">
+                <input type="button" class="btn btn-success" value="Save" ng-show="hide" ng-click="MainCtrl.SaveObject();" />
+            </div>
+        </div>
+
+    </div>
+    <footer style="margin-top: 2000px;">footer</footer>
+
+    @Scripts.Render("~/bundles/AngularDragAndDropExample")
+    @Styles.Render("~/Content/css")
+</body>
+</html>
