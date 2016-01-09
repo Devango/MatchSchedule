@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Angular Drag And Drop with ASP.NET MVC Example</title>
-       
+
 </head>
 <body ng-app="AngularDragAndDropExample">
 
@@ -49,7 +49,7 @@
         <div ng-drop="true" ng-drop-success="onDropComplete2($data,$event)">
             <span class="title">Birds</span>
 
-            <div ng-repeat="obj in droppedObjects2" ng-drag="false" ng-drag-data="obj" ng-drag-success="onDragSuccess2($data,$event)" 
+            <div ng-repeat="obj in droppedObjects2" ng-drag="false" ng-drag-data="obj" ng-drag-success="onDragSuccess2($data,$event)"
                 ng-style="{'background-image' : obj.picture}"
                 ng-center-anchor="{{centerAnchor}}">
                 {{obj.name}}
@@ -66,10 +66,39 @@
             </div>
         </div>
 
+
+        <div ng-controller="DragDropController as MainCtrl">
+            <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3>Please fill the form</h3>
+        </div>
+        <form ng-submit="submit()">
+          <div class="modal-body">
+            <label>name</label>
+            <input type="text" ng-model="user.name" />
+            <label>Age</label>
+            <select ng-model="user.age"
+                ng-options="obj.id as obj.name for obj in user.options">
+            </select>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+              <input type="submit" class="btn primary-btn" value="Submit" />
+          </div>
+        </form>
+    </script>
+
+            <button class="btn" ng-click="open()">Open me!</button>
+            <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+        </div>
+
     </div>
     <footer style="margin-top: 2000px;">footer</footer>
 
     @Scripts.Render("~/bundles/AngularDragAndDropExample")
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
     @Styles.Render("~/Content/css")
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
 </body>
 </html>

@@ -19,9 +19,16 @@ namespace AngularDragAndDrop.Controllers
 
         [HttpGet]
         public string GetData()
-        {           
+        {
 
             return JsonConvert.SerializeObject(GetTableDATA(), Formatting.Indented);
+        }
+
+        [HttpPost]
+        public string PostData(MyData data)
+        {
+
+            return "Success !!!";
         }
 
         private DataTable GetTableDATA()
@@ -29,8 +36,8 @@ namespace AngularDragAndDrop.Controllers
             DataTable dt = new DataTable();
             dt.Columns.Add("Name");
             dt.Columns.Add("picture");
-            dt.Columns.Add("type");         
-            
+            dt.Columns.Add("type");
+
 
 
             DataRow dr = dt.NewRow();
@@ -79,4 +86,12 @@ namespace AngularDragAndDrop.Controllers
 
         }
     }
+
+    public class MyData
+    {
+        public string name { get; set; }
+        public string age { get; set; }
+
+    }
+
 }

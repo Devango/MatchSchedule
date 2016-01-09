@@ -7,6 +7,28 @@
 
     };
 
+    //var myData = {};
+
+
+
+
+    DragDropService.postFormData = function (myData) {
+
+
+
+        var postform = $http({
+            method: "POST",
+
+            data: myData,
+
+            url: '/Home/PostData'
+        })
+
+        return postform;
+    };
+
+    
+
     return DragDropService;
 }
 
