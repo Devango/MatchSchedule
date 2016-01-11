@@ -43,6 +43,7 @@
 
                         console.log('Data Posted to server !!!');
 
+                        alert("Data Posted to server !!!");
                     })
 
                     postData.error(function (error) {
@@ -151,7 +152,7 @@
 
     function IsAllDone() {
         if ($scope.draggableObjects.length == 0)
-            alert("Excellent !!!");
+            $scope.open();
     }
 
 }
